@@ -1,0 +1,18 @@
+{
+  "keranjang": [
+    {
+      "id": 1,
+      "nama": "LG P120RT",
+      "harga": 2849000,
+      "qyt": 3,
+      "total": 8547000
+    },
+    {
+      "id": 2,
+      "nama": "LG FM1007N3W",
+      "harga": 4750000,
+      "qyt": 1,
+      "total": 4750000
+    }
+  ]
+}
