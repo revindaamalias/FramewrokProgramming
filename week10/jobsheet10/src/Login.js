@@ -1,0 +1,79 @@
+import React, { useState, useContext } from "react";
+import { AuthContext } from "./index";
+import firebase from "firebase";
+
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setErrors] = useState("");
+
+  const Auth = useContext(AuthContext);
+  const handleForm = (e) => {
+    e.preventDefault();
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((res) => {
+        if (res.user) Auth.setLoggedIn(true);
+      })
+      .catch((e) => {
+        setErrors(e.message);
+      });
+  };
+
+  return (
+    <div>
+      <div className="container" id="container">
+        <div className="form-container sign-in-container">
+          <form onSubmit={(e) => handleForm(e)}>
+            <h1>Login</h1>
+            <button className="googleBtn" type="button">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                alt="logo"
+              />
+              Join With Google
+            </button>
+            <hr />
+            <span>or use your email for login</span>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              type="email"
+              placeholder="email"
+            />{" "}
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              name="password"
+              value={password}
+              type="password"
+              placeholder="password"
+            />
+            <button type="submit">Login</button>
+            <span>{error}</span>
+          </form>
+        </div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button className="ghost" id="signIn">
+                Login
+              </button>
+            </div>
+            <div className="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
