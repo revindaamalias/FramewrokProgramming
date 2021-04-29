@@ -1,0 +1,17 @@
+{
+  "posts": [
+    {
+      "id": 17,
+      "NIM": 1841720185,
+      "nama": "Revinda Amalia Saktyawati",
+      "alamat": "Malang",
+      "hp": "0812345678",
+      "angkatan": "2018",
+      "status": "aktif"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
